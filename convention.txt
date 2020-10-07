@@ -1,0 +1,18 @@
+ WIFE FOLDER
+
+ wi-zkl10_va => wife-index
+ wa-zkl10_va=> wife-actuality
+ wpo-zkl10_va=> wife-post
+ wn-zkl10_va=> wife-notifications
+ $2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm => chat
+ $2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm-messages=> messages-chat
+ wpr-zkl10_va=> wife-profil
+ wh-zkl10_va=> wife-historique
+
+
+=>
+=>
+=>
+=>
+=>
+=>
