@@ -9,7 +9,7 @@
                     <div class="breadcrumb__links">
                         <a href="{{ url('./wi-zkl10_va') }}"><i class="fa fa-home"></i>Accueil</a>
                         <a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm') }}">Mon tchat</a>
-                        <span>Liste de toutes vos conversactions</span>
+                        <span> Liste de toutes vos conversactions</span>
                     </div>
                 </div>
             </div>
