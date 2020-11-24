@@ -7,9 +7,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="{{ url('./wi-zkl10_va') }}"><i class="fa fa-home"></i>Accueil</a>
+                    @if(Auth::user()->member==('oui'))
+                        <a href="{{ url('./wi-zkl10_va/'.Auth::user()->pseudo) }}"><i class="fa fa-home"></i>Accueil</a>
+                    @else
+                        <a href="{{ url('./ui-uBl196_va-58_kO_') }}"><i class="fa fa-home"></i> Accueil</a>
+                    @endif
                         <a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm') }}">Mon tchat</a>
-                        <span> Liste de toutes vos conversactions</span>
+                        <span>Liste de toutes vos conversactions</span>
                     </div>
                 </div>
             </div>
@@ -27,16 +31,22 @@
                             <div class="section-title">
                                 <h4>Discussions ( 20 )</h4>
                             </div>
-                            <a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm-messages') }}" class="blog__feature__item">
+                            @foreach($friends as $friend)
+                            <a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/ln2ZPx2o5SsJkbtLJIWI/tOeoZLWK/ln2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfuvKAPBVogtOeoZLWK/lnuvKAPBVog/GVTrShBUfmfuvKAPBVog/GVTrShBUfmfm-messages/'.$friend->id_expediteur.'/'.$friend->pseudo_expediteur) }}" class="blog__feature__item">
                                 <div class="blog__feature__item__pic">
-                                    <img src="{{ asset('img/blog/sidebar/fp-1.jpg') }}" alt="">
+                                    <img width="70" style="border-radius:50%;" src="{{ asset('storage/member_profile/'.$friend->profil)}}" alt="">
                                 </div>
                                 <div class="blog__feature__item__text">
-                                    <h6>Amf Cannes Red </h6>
-                                    <span>Seb 17, 2019</span>
-                                    <p>Ireland Baldwin Shows...</p>
+                                    <h6>{{ $friend->pseudo_expediteur }}</h6>
+                                    <span></span>
+                                    @if($friend->reading=='unread')
+                                    <p style="font-weight:bold;">{{ substr($friend->message, 0, 10).'...' }}</p>
+                                    @else
+                                    <p>{{ substr($friend->message, 0, 10).'...' }}</p>
+                                    @endif
                                 </div>
                             </a>
+                            @endforeach
                         </div>
                         <div class="blog__details__btns">
                             <div class="row">
@@ -52,17 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="blog__sidebar__item mt-5">
-                            <div class="section-title">
-                                <h4>Statistiques</h4>
-                            </div>
-                            <div class="blog__sidebar__tags">
-                                <a href="#">Discussion total ( 2 )</a>
-                                <a href="#">Discussions supprimées ( 2 )</a>
-                                <a href="#">Discussions non lues ( 2 )</a>
-                                <a href="#">Nombre de connexion ( 2 )</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

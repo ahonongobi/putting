@@ -1,5 +1,9 @@
 @extends('layouts/index-layout', ['title' => 'Home'])
 
+@section('menu')
+    @include('layouts/_menu')
+@stop
+
 @section('content')
     <!-- Categories Section Begin -->
     <section class="categories">
@@ -157,56 +161,23 @@
 <div class="instagram mt-5" id="dochoice">
     <div class="container-fluid">
         <div class="row">
+        @foreach($pictures as $picture)
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta1.jpg')}}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('storage/member_profile/'.$picture->profile_photo_path)}}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
                         <a href="#">@ ashion_shop</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta2.jpg')}}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta3.jpg')}}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta4.jpg')}}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta1.jpg')}}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta2.jpg')}}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
+        @endforeach    
         </div>
     </div>
 </div>
 <!-- End -->
+@stop
+
+@section('footer')
+
+    @include('layouts/_footer_index')
 @stop

@@ -32,7 +32,13 @@
         <div id="preloder">
             <div class="loader"></div>
         </div>
-        @include('layouts/_wife-menu')
+        @if(Auth::user()->member==('oui'))
+            @include('layouts/_wife-menu')
+        @endif
+
+        @if(Auth::user()->member==('non'))
+            @include('layouts/_user-menu')
+        @endif
 
         @yield('content')
 

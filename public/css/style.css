@@ -76,6 +76,9 @@ h6 {
 	font-size: 16px;
 }
 
+.text-red {
+	color:red;
+}
 p {
 	font-size: 14px;
 	font-family: "Montserrat", sans-serif;
@@ -3740,12 +3743,12 @@ ol {
 
 
 .author {
-  align-items: center;
-  color: #f53076;
-  display: flex;
-  font-family: Arial;
-  line-height: 1.4;
-  margin: auto;
+	align-items: center;
+	color: #f53076;
+	display: flex;
+	font-family: Arial;
+	line-height: 1.4;
+	margin-left: 21%;
   /*padding: 1rem;*/
 }
 
@@ -3761,6 +3764,37 @@ ol {
   margin-right: 1px;
   width: 6rem;
 }
+
+.author1 {
+	align-items: center;
+	color: #f53076;
+	display: flex;
+	font-family: Arial;
+	line-height: 1.4;
+	margin: auto;
+	/*padding: 1rem;*/
+  }
+  
+  .author1 a {
+	color: #f53076;
+	font-weight: 600;
+  }
+
+
 .next>a,.pager .next>span{float:right}
 .previous>a,.pager .previous>span{float:left}
 .pager{padding-left:0;margin:20px 0;text-align:center;list-style:none}.pager li{display:inline}.pager li>a,.pager li>span{display:inline-block;padding:5px 14px;background-color:#fff;border:1px solid #ddd;border-radius:15px}.pager li>a:focus,.pager li>a:hover{text-decoration:none;background-color:#eee}.pager .next>a,.pager .next>span{float:right}.pager .previous>a,.pager .previous>span{float:left}.pager .disabled>a,.pager .disabled>a:focus,.pager .disabled>a:hover,.pager .disabled>span{color:#777;cursor:not-allowed;background-color:#fff}
+
+
+
+@media only screen and (min-width: 320px) {
+	.author {
+		margin-left: 0 ;
+	}
+}
+
+@media only screen and (min-width: 1008px) {
+	.author {
+		margin-left: 20% ;
+	}
+}

@@ -38,13 +38,13 @@
         <div id="preloder">
             <div class="loader"></div>
         </div>
-        @include('layouts/_menu')
+        
+        @yield('menu')
 
         @yield('content')
 
         @yield('footer')
 
-        @include('layouts/_footer')
         
         <!-- Js Plugins -->
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

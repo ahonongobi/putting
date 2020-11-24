@@ -18,42 +18,44 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="{{ url('./wi-zkl10_va') }}"><i class="fa fa-home"></i>Accueil</a>
+                    @if(Auth::user()->member==('oui'))
+                        <a href="{{ url('./wi-zkl10_va/'.Auth::user()->pseudo) }}"><i class="fa fa-home"></i>Accueil</a>
+                    @endif
+                    @if(Auth::user()->member==('non'))
+                        <a href="{{ url('./ui-uBl196_va-58_kO_') }}"><i class="fa fa-home"></i>Accueil</a>
+                    @endif
                         <a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm') }}">Mon tchat</a>
-                        <span>Discussion avec : NOM DU CLIENT</span>
+                        <span>Discussion avec : {{ $correctFriend[0]->pseudo }}</span>
                     </div>
+                    @if(Session::has('meetingok'))
+                        <div class="text-center col-lg-12 alert alert-success" role="alert">
+                            {{ Session::get('meetingok') }} 
+                        </div>
+                    @endisset
                 </div>
             </div>
         </div>
     </div>
-
+    @if(Auth::user()->member==('oui'))
     <div class="container mt-4">
         <div id="listResults">
           
-
+        
           <div class="col-xs-12">
-           
+            
             <div class="col-xs-4 text-center">
-              <div class="checkbox checkbox-circle checkbox-green">
-                <input id="checkbox4a" type="checkbox">
-                <label>RDV_OK</label>
-              </div>
+                <a href="{{ url('./meetingok/'.$correctFriend[0]->pseudo) }}"><button class="btn btn-success">RDV-OK</button></a>
             </div>
             <div class="col-xs-4 text-center">
-              <div class="checkbox checkbox-circle checkbox-blue">
-                <input id="checkbox5a" type="checkbox">
-                <label>ROUTE</label>
-              </div>
+            <a href="{{ url('./meetingconfirmation/'.$correctFriend[0]->pseudo) }}"><button class="btn btn-primary">Confirmé</button></a>
             </div>
             <div class="col-xs-4 text-center">
-              <div class="checkbox checkbox-circle checkbox-black">
-                <input id="checkbox6a" type="checkbox">
-                <label>RETOUR</label>
-              </div>
+            <a href="{{ url('./meetingback/'.$correctFriend[0]->pseudo) }}"><button style="background-color: #f53076;color: #ffffff;" class="btn">Retour</button></a>
             </div>
           </div>
         </div>
     </div>
+    @endif
     <!-- Breadcrumb End -->
 <div class="container">
     <div class="col-md-12 col-lg-12">
@@ -73,7 +75,7 @@
                         </ul>
                     </div>
                 </div>
-                <h3 class="panel-title"><a href="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfm') }}" style="color: #f53076;"><i class="fa fa-arrow-left"> sortir</i></a> Chat</h3>
+                <h3 class="panel-title"><a href="{{ url('./sortir/read/'.$id) }}" style="color: #f53076;"><i class="fa fa-arrow-left"> <span style="font-size:20px;">sortir</span></i></a> Chat</h3>
             </div>
     
             <!--Widget body-->
@@ -83,29 +85,37 @@
                         <ul class="list-unstyled media-block">
                             <li class="mar-btm">
                                 <div class="media-left">
-                                    <img src="{{ asset('img/instagram/insta1.jpg') }}" class="img-circle img-sm" alt="Profile Picture">
+                                    <img src="{{ asset('storage/member_profile/'.$correctFriend[0]->profile_photo_path)}}" class="img-circle img-sm" alt="Profile Picture">
                                 </div>
-                                <div class="media-body pad-hor">
-                                    <div class="speech">
-                                        <a href="#" class="media-heading">John Doe</a>
-                                        <p>Hello Lucy, how can I help you today ? I want to buy a new shoes.Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web.I want to buy a new shoes.Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web.I want to buy a new shoes.Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web.</p>
-                                        <p class="speech-time">
-                                        <i class="fa fa-clock-o fa-fw"></i>09:23AM 
+                                @foreach($messages as $message)
+                                @if($message->id_expediteur==Auth::user()->id OR $message->id_destinateur==$id)
+                                <div style="margin-bottom:15px;" class="media-body pad-hor">
+                                    
+                                    <div class="media-body pad-hor speech-right">
+                                    <div style="background-color:indigo;"  class="speech">
+                                        <a style="color:#fff;" href="#" class="media-heading">{{ Auth::user()->pseudo }}</a>
+                                        <p style="color:#fff;">{{ $message->message }}</p>
+                                        <p class="speech-time" style="color:#fff;">
+                                            <i  class="fa fa-clock-o fa-fw"></i> {{ $message->created_at }} 
                                         </p>
                                     </div>
                                 </div>
+                                   
+                                </div>
+                                @else
                             </li>
                             <li class="mar-btm">
-                                <div class="media-body pad-hor speech-right">
-                                    <div class="speech">
-                                        <a href="#" class="media-heading">Lucy Doe</a>
-                                        <p>Hi, I want to buy a new shoes.Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...Collection of free and premium under construction / coming soon bootstrap templates. Most of the bootstrap templates are responsive web...</p>
-                                        <p class="speech-time">
-                                            <i class="fa fa-clock-o fa-fw"></i> 09:23AM <a href="n"><span style="color: red">SUPPRIMER</span></a>
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="speech">
+                                <a href="#" class="media-heading">{{ $message->pseudo_expediteur }}</a>
+                                <p>{{ $message->message }}</p>
+                                <p class="speech-time">
+                                <i class="fa fa-clock-o fa-fw"></i>{{ $message->created_at }}
+                                </p>
+                            </div>
+                                
+                                @endif
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 <div class="nano-pane"><div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div></div></div>
@@ -113,12 +123,19 @@
                 <!--Widget footer-->
                 <div class="panel-footer">
                     <div class="row">
+                    <form action="{{ url('./$2y$12$U2ZPx2o5SsJkbtLJIWI/tOeoZLWK/ln2ZPx2o5SsJkbtLJIWI/tOeoZLWK/ln2ZPx2o5SsJkbtLJIWI/tOeoZLWK/lnuvKAPBVog/GVTrShBUfmfuvKAPBVogtOeoZLWK/lnuvKAPBVog/GVTrShBUfmfuvKAPBVog/GVTrShBUfmfm-messages') }}" method="post">
+                        @csrf
+                        
+                        <input type="hidden" name="id_destinateur" value="{{ $id }}">
+                        <input type="hidden" name="pseudo_expediteur" value="{{ Auth::user()->pseudo }}">
+                        
                         <div class="col-xs-12">
-                            <textarea type="text" placeholder="Message.." class="form-control chat-input"></textarea>
+                            <textarea type="text" name="message" placeholder="Message.." class="form-control chat-input"></textarea>
                         </div>
                         <div class="col-xs-12">
                             <button style="background-color: #f53076;color: #ffffff;" class="btn btn-block" type="submit">Envoyez</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

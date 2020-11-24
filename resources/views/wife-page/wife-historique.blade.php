@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="{{ url('./wi-zkl10_va') }}"><i class="fa fa-home"></i> Accueil</a>
+                        <a href="{{ url('./wi-zkl10_va/'.Auth::user()->pseudo) }}"><i class="fa fa-home"></i> Accueil</a>
                         <span>Historique</span>
                     </div>
                 </div>
